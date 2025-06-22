@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.proiect.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_movieRecommendationFragment"
+            app:destination="@id/movieRecommendationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.proiect.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_movieRecommendationFragment"
+            app:destination="@id/movieRecommendationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieRecommendationFragment"
+        android:name="com.example.proiect.MovieRecommendationFragment"
+        android:label="fragment_movie_recommendation"
+        tools:layout="@layout/fragment_movie_recommendation" >
+        <action
+            android:id="@+id/action_movieRecommendationFragment_to_reserveMovieFragment"
+            app:destination="@id/reserveMovieFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reserveMovieFragment"
+        android:name="com.example.proiect.ReserveMovieFragment"
+        android:label="fragment_reserve_movie"
+        tools:layout="@layout/fragment_reserve_movie" >
+        <action
+            android:id="@+id/action_reserveMovieFragment_to_removeReservationFragment"
+            app:destination="@id/removeReservationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/removeReservationFragment"
+        android:name="com.example.proiect.RemoveReservationFragment"
+        android:label="fragment_remove_reservation"
+        tools:layout="@layout/fragment_remove_reservation" >
+        <action
+            android:id="@+id/action_removeReservationFragment_to_navigationMenuFragment"
+            app:destination="@id/navigationMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigationMenuFragment"
+        android:name="com.example.proiect.NavigationMenuFragment"
+        android:label="fragment_navigation_menu"
+        tools:layout="@layout/fragment_navigation_menu" />
+</navigation>
