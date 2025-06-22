@@ -18,12 +18,7 @@ interface VizionateDao {
     @Delete
     fun unmarkWatched(entry: Vizionate): Int
 
-    @Query("""
-    SELECT f.* 
-    FROM film f 
-    INNER JOIN vizionate v ON f.id = v.filmId 
-    WHERE v.userId = :userId
-    ORDER BY f.nume
-  """)
-    fun getWatchedForUser(userId: String): Flow<List<Film>>
+    @Query("SELECT * FROM vizionate WHERE userId = :userId")
+    fun getWatchedForUser(userId: String): Flow<List<Vizionate>>
+
 }

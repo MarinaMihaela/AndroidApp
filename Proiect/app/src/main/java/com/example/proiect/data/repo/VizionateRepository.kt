@@ -17,6 +17,5 @@ class VizionateRepository(private val dao: VizionateDao) {
         dao.unmarkWatched(entry)
     }
 
-    fun getWatchedForUser(userId: String): Flow<List<Film>> =
-        dao.getWatchedForUser(userId)
+    fun getWatchedForUser(userId: String): Flow<List<Vizionate>> = dao.getWatchedForUser(userId)
 }

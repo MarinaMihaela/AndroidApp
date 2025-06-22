@@ -6,6 +6,7 @@ import com.example.proiect.data.db.DatabaseProvider
 import com.example.proiect.data.repo.VizionateRepository
 import com.example.proiect.data.model.Vizionate
 import kotlinx.coroutines.launch
+import androidx.lifecycle.asLiveData
 
 class VizionateViewModel(app: Application) : AndroidViewModel(app) {
     private val repo = VizionateRepository(

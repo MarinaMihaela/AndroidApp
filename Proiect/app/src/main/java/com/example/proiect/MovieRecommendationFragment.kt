@@ -1,59 +1,81 @@
 package com.example.proiect
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import com.example.proiect.data.db.AppDatabase
+import com.example.proiect.data.model.Film
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [MovieRecommendationFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MovieRecommendationFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_movie_recommendation, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MovieRecommendationFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MovieRecommendationFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val db = AppDatabase.getDatabase(requireContext())
+        val filmDao = db.filmDao()
+        val container = view.findViewById<LinearLayout>(R.id.movieListContainer)
+
+        lifecycleScope.launch {
+            val sampleFilms = listOf(
+                Film(
+                    id = 1,
+                    nume = "Inception",
+                    descriere = "A mind-bending thriller",
+                    durata = 148,
+                    gen = "Sci-Fi",
+                    actori = "Leonardo DiCaprio",
+                    regizori = "Christopher Nolan",
+                    poster = "",
+                    rating = 4.5f
+                ),
+                Film(
+                    id = 2,
+                    nume = "Interstellar",
+                    descriere = "Exploring space and time",
+                    durata = 169,
+                    gen = "Sci-Fi",
+                    actori = "Matthew McConaughey",
+                    regizori = "Christopher Nolan",
+                    poster = "",
+                    rating = 4.8f
+                )
+            )
+
+            withContext(Dispatchers.IO) {
+                val filmsInDb = filmDao.getAll().first()
+
+                if (filmsInDb.isEmpty()) {
+                    filmDao.insertAll(sampleFilms)
+                }
+
+                val allFilms = filmDao.getAll().first()
+
+                withContext(Dispatchers.Main) {
+                    allFilms.forEach { film ->
+                        val tv = TextView(requireContext())
+                        tv.text = "${film.nume} (${film.gen}) - ${film.rating ?: "-"}"
+                        tv.textSize = 18f
+                        container.addView(tv)
+                    }
                 }
             }
+
+        }
     }
 }

@@ -14,15 +14,10 @@ interface RatedDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun rateFilm(entry: Rated): Long
 
-    @Query("SELECT rating FROM rated WHERE userId = :userId AND filmId = :filmId LIMIT 1")
+    @Query("SELECT rating FROM Rated WHERE userId = :userId AND filmId = :filmId")
     fun getRating(userId: String, filmId: Int): Flow<Int?>
 
-    @Query("""
-    SELECT f.id, f.nume, f.descriere, f.durata, f.gen, f.actori, f.regizori, f.poster, r.rating
-    FROM film f 
-    INNER JOIN rated r ON f.id = r.filmId 
-    WHERE r.userId = :userId
-    ORDER BY f.nume
-  """)
-    fun getRatedForUser(userId: String): Flow<List<FilmRating>>
+    @Query("SELECT * FROM Rated WHERE userId = :userId")
+    fun getRatedForUser(userId: String): Flow<List<Rated>>
 }
+

@@ -5,6 +5,7 @@ import com.example.proiect.data.model.Film
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.flow.flow
 
 class FilmRepository(private val dao: FilmDao) {
 
@@ -15,6 +16,7 @@ class FilmRepository(private val dao: FilmDao) {
     fun getAll(): Flow<List<Film>> =
         dao.getAll()
 
-    fun getById(filmId: Int): Flow<Film?> =
-        dao.getById(filmId)
+    fun getById(filmId: Int): Flow<Film?> = flow {
+        emit(dao.getById(filmId))
+    }
 }

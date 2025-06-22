@@ -6,6 +6,8 @@ import com.example.proiect.data.db.DatabaseProvider
 import com.example.proiect.data.repo.RatedRepository
 import com.example.proiect.data.model.Rated
 import kotlinx.coroutines.launch
+import androidx.lifecycle.asLiveData
+
 
 class RatedViewModel(app: Application) : AndroidViewModel(app) {
     private val repo = RatedRepository(

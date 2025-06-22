@@ -13,9 +13,10 @@ interface FilmDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(films: List<Film>): List<Long>
 
-    @Query("SELECT * FROM film ORDER BY nume")
+    @Query("SELECT * FROM film")
     fun getAll(): Flow<List<Film>>
 
-    @Query("SELECT * FROM film WHERE id = :filmId LIMIT 1")
-    fun getById(filmId: Int): Flow<Film?>
+    @Query("SELECT * FROM film WHERE id = :filmId")
+    fun getById(filmId: Int): Film?
+
 }

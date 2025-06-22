@@ -13,9 +13,10 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun upsert(user: User): Long
 
-    @Query("SELECT * FROM user WHERE id = :userId LIMIT 1")
+    @Query("SELECT * FROM user WHERE id = :userId")
     fun getById(userId: String): Flow<User?>
 
-    @Query("SELECT * FROM user WHERE email = :email LIMIT 1")
+    @Query("SELECT * FROM User WHERE email = :email")
     fun getByEmail(email: String): Flow<User?>
+
 }
