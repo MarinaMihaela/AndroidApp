@@ -5,7 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.proiect.data.model.Rated
-import com.example.proiect.data.model.FilmRating
 import kotlinx.coroutines.flow.Flow
 
 @Dao

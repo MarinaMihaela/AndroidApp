@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 interface FilmDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(films: List<Film>): List<Long>
+    fun insertAll(films: List<Film>)
 
     @Query("SELECT * FROM film")
     fun getAll(): Flow<List<Film>>

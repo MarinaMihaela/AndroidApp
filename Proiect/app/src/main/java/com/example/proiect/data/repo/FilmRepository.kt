@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.flow
 
 class FilmRepository(private val dao: FilmDao) {
 
-    suspend fun insertAll(films: List<Film>): List<Long> = withContext(Dispatchers.IO) {
+    suspend fun insertAll(films: List<Film>): Unit = withContext(Dispatchers.IO) {
         dao.insertAll(films)
     }
 
