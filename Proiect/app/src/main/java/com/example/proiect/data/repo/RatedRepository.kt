@@ -2,7 +2,6 @@ package com.example.proiect.data.repo
 
 import com.example.proiect.data.dao.RatedDao
 import com.example.proiect.data.model.Rated
-import com.example.proiect.data.model.FilmRating
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
