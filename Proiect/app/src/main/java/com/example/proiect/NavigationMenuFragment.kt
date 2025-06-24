@@ -2,9 +2,13 @@ package com.example.proiect
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.google.android.material.switchmaterial.SwitchMaterial
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
+
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,6 +40,21 @@ class NavigationMenuFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_navigation_menu, container, false)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val switchTheme = view.findViewById<SwitchMaterial>(R.id.switchTheme)
+        switchTheme.isChecked = requireContext().isDarkTheme
+        switchTheme.setOnCheckedChangeListener { _, isChecked ->
+            requireContext().isDarkTheme = isChecked
+            AppCompatDelegate.setDefaultNightMode(
+                if (isChecked) AppCompatDelegate.MODE_NIGHT_YES
+                else AppCompatDelegate.MODE_NIGHT_NO
+            )
+            requireActivity().recreate()
+        }
+    }
+
 
     companion object {
         /**
