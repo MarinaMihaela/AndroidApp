@@ -3,8 +3,10 @@ package com.example.proiect.data.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.serialization.Serializable
 
 @Entity(tableName = "film")
+@Serializable
 data class Film(
     @PrimaryKey val id: Int,
     val nume: String,
