@@ -24,7 +24,7 @@ object FilmDataSource {
             gen = "Sci-Fi",
             actori = "Matthew McConaughey",
             regizori = "Christopher Nolan",
-            poster = "movie_generic",
+            poster = "poster_2",
             rating = 4.8f
         ),
         Film(
@@ -35,7 +35,7 @@ object FilmDataSource {
             gen = "Action",
             actori = "Christian Bale, Heath Ledger",
             regizori = "Christopher Nolan",
-            poster = "movie_generic",
+            poster = "poster_3",
             rating = 4.9f
         ),
         Film(
@@ -46,7 +46,7 @@ object FilmDataSource {
             gen = "Drama",
             actori = "Tim Robbins, Morgan Freeman",
             regizori = "Frank Darabont",
-            poster = "movie_generic",
+            poster = "poster_4",
             rating = 5.0f
         ),
         Film(
@@ -57,7 +57,7 @@ object FilmDataSource {
             gen = "Crime",
             actori = "John Travolta, Uma Thurman",
             regizori = "Quentin Tarantino",
-            poster = "movie_generic",
+            poster = "poster_5",
             rating = 4.7f
         ),
         Film(
@@ -68,7 +68,7 @@ object FilmDataSource {
             gen = "Drama",
             actori = "Tom Hanks",
             regizori = "Robert Zemeckis",
-            poster = "movie_generic",
+            poster = "poster_6",
             rating = 4.8f
         ),
         Film(
@@ -79,7 +79,7 @@ object FilmDataSource {
             gen = "Sci-Fi",
             actori = "Keanu Reeves",
             regizori = "The Wachowskis",
-            poster = "movie_generic",
+            poster = "poster_7",
             rating = 4.7f
         ),
         Film(

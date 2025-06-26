@@ -19,7 +19,7 @@
         <ImageView
             android:id="@+id/moviePoster"
             android:layout_width="100dp"
-            android:layout_height="150dp"
+            android:layout_height="110dp"
             android:scaleType="centerCrop"
             android:src="@drawable/movie_generic"
             android:contentDescription="Movie poster" />

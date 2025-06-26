@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5">
+    android:orientation="vertical"
+    android:background="#F5F5F5"
+    android:fitsSystemWindows="true"> <!-- ca să nu se suprapună cu bara de sus -->
 
+    <!-- Banner -->
+    <TextView
+        android:id="@+id/bannerText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Movie Recommendation"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="16dp"
+        android:textColor="#FFFFFF"
+        android:background="#3F51B5" />
+
+    <!-- Lista de filme -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMovies"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:padding="16dp"
-        android:clipToPadding="false"/>
-</FrameLayout>
+        android:clipToPadding="false" />
+</LinearLayout>
