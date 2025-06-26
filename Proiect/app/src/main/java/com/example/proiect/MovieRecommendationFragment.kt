@@ -71,7 +71,6 @@ class MovieRecommendationFragment : Fragment() {
                         android.util.Log.e("MyApp", "Eroare la parsarea filmelor: ${e.message}")
                     }
                 }
-//
             }
         }
     }
