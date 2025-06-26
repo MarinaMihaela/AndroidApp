@@ -43,7 +43,7 @@ class LoginFragment : Fragment() {
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             Toast.makeText(requireContext(), "Login successful", Toast.LENGTH_SHORT).show()
-                            findNavController().navigate(R.id.action_loginFragment_to_movieRecommendationFragment)
+                            findNavController().navigate(R.id.action_login_to_main)
                         } else {
                             Toast.makeText(requireContext(), "Login failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
                         }
@@ -54,7 +54,7 @@ class LoginFragment : Fragment() {
         }
 
         btnRegister.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+            findNavController().navigate(R.id.action_login_to_register)
         }
 
         tvForgotPassword.setOnClickListener {

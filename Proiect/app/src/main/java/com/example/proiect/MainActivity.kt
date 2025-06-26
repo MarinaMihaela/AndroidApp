@@ -23,7 +23,26 @@ class MainActivity : AppCompatActivity() {
     private lateinit var server: LocalServer
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+
+                super.onCreate(savedInstanceState)
+
+        // Grab references
+        val navController = findNavController(R.id.nav_host_fragment)
+        val bottomNav    = findViewById<BottomNavigationView>(R.id.bottom_nav)
+
+        // Wire up bottom nav to navigation controller
+        bottomNav.setupWithNavController(navController)
+
+        // Hide on login/register; show everywhere else
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            bottomNav.visibility = if (
+                destination.id == R.id.loginFragment ||
+                destination.id == R.id.registerFragment
+            ) View.GONE else View.VISIBLE
+        }
+
+
+      
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 //        findViewById(R.id.nav_host_fragment)

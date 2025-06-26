@@ -41,7 +41,7 @@ class RegisterFragment : Fragment() {
                         if (task.isSuccessful) {
                             Toast.makeText(requireContext(), "Registration successful", Toast.LENGTH_SHORT).show()
                             // Automatically return to login screen after registration
-                            findNavController().navigate(R.id.action_registerFragment_to_movieRecommendationFragment)
+                            findNavController().navigate(R.id.action_register_to_main)
                         } else {
                             Toast.makeText(requireContext(), "Registration failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
                         }
