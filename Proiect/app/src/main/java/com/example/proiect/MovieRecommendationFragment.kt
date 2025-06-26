@@ -13,9 +13,9 @@ import com.example.proiect.data.db.AppDatabase
 import com.example.proiect.data.model.Film
 import com.example.proiect.adapter.MovieAdapter
 import com.example.proiect.data.model.api.FilmDataSource
-import kotlinx.coroutines.CoroutineScope
+
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.first
+
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.builtins.ListSerializer
@@ -71,10 +71,7 @@ class MovieRecommendationFragment : Fragment() {
                         android.util.Log.e("MyApp", "Eroare la parsarea filmelor: ${e.message}")
                     }
                 }
-//                val allFilms = filmDao.getAll().first()
-//                withContext(Dispatchers.Main) {
-//                    adapter.setMovies(allFilms)
-//                }
+//
             }
         }
     }

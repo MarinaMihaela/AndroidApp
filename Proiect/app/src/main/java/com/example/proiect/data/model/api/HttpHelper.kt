@@ -21,26 +21,6 @@ object HttpHelper {
         }
     }
 
-//    fun httpPostFilme(url: String, jsonBody: String): String {
-//        return try {
-//            val connection = URL(url).openConnection() as HttpURLConnection
-//            connection.requestMethod = "POST"
-//            connection.doOutput = true
-//            connection.setRequestProperty("Content-Type", "application/json")
-//
-//            val outputStream = connection.outputStream
-//            outputStream.write(jsonBody.toByteArray())
-//            outputStream.flush()
-//            outputStream.close()
-//
-//            val response = connection.inputStream.bufferedReader().readText()
-//            Log.d("MyApp", "POST response: $response")
-//            response
-//        } catch (e: Exception) {
-//            Log.e("MyApp", "Error in POST", e)
-//            "Error: ${e.localizedMessage}"
-//        }
-//    }
 
     fun httpPostFilme(url: String, jsonBody: String): String {
         return try {
