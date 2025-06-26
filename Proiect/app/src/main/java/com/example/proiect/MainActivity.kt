@@ -2,6 +2,7 @@ package com.example.proiect
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proiect.data.model.api.HttpHelper
 import com.example.proiect.data.model.api.LocalServer
@@ -13,8 +14,11 @@ import androidx.activity.enableEdgeToEdge
 
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.proiect.data.model.Film
 import com.example.proiect.data.model.api.FilmDataSource
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.Json
 
@@ -24,7 +28,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-                super.onCreate(savedInstanceState)
+        super.onCreate(savedInstanceState)
+
+        setContentView(R.layout.activity_main)
 
         // Grab references
         val navController = findNavController(R.id.nav_host_fragment)
@@ -44,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
       
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+
 //        findViewById(R.id.nav_host_fragment)
 //        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
 //            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
