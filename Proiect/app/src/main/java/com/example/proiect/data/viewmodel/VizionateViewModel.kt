@@ -7,6 +7,8 @@ import com.example.proiect.data.repo.VizionateRepository
 import com.example.proiect.data.model.Vizionate
 import kotlinx.coroutines.launch
 import androidx.lifecycle.asLiveData
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flow
 
 class VizionateViewModel(app: Application) : AndroidViewModel(app) {
     private val repo = VizionateRepository(
@@ -22,6 +24,21 @@ class VizionateViewModel(app: Application) : AndroidViewModel(app) {
         repo.unmarkWatched(Vizionate(userId, filmId))
     }
 
+    private val db = DatabaseProvider.getDatabase(app)
+    private val vizRepo = VizionateRepository(db.vizionateDao())
+    private val filmDao = db.filmDao()
+
     fun getWatchedForUser(userId: String) =
-        repo.getWatchedForUser(userId).asLiveData()
+        vizRepo.getWatchedForUser(userId)
+            .flatMapLatest { vizList ->
+                flow {
+                    // for each Vizionate entry, look up its film by ID
+                    val films = vizList.mapNotNull { v ->
+                        filmDao.getById(v.id)
+                    }
+                    emit(films)
+                }
+            }
+            .asLiveData()
+
 }

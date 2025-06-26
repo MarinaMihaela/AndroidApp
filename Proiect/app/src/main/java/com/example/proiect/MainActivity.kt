@@ -1,21 +1,30 @@
 package com.example.proiect
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-//        findViewById(R.id.nav_host_fragment)
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-//            insets
-//        }
+
+        // Grab references
+        val navController = findNavController(R.id.nav_host_fragment)
+        val bottomNav    = findViewById<BottomNavigationView>(R.id.bottom_nav)
+
+        // Wire up bottom nav to navigation controller
+        bottomNav.setupWithNavController(navController)
+
+        // Hide on login/register; show everywhere else
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            bottomNav.visibility = if (
+                destination.id == R.id.loginFragment ||
+                destination.id == R.id.registerFragment
+            ) View.GONE else View.VISIBLE
+        }
     }
 }

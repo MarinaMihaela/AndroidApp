@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/movieRecommendationFragment">
+
+    <!-- Tab 1: All Films -->
+    <fragment
+        android:id="@+id/movieRecommendationFragment"
+        android:name="com.example.proiect.MovieRecommendationFragment"
+        android:label="All Films"
+        tools:layout="@layout/fragment_movie_recommendation" />
+
+    <!-- Tab 2: Watched -->
+    <fragment
+        android:id="@+id/watchedFragment"
+        android:name="com.example.proiect.WatchedFragment"
+        android:label="Watched"
+        tools:layout="@layout/fragment_watched" />
+
+    <!-- Tab 3: Rated -->
+    <fragment
+        android:id="@+id/ratedFragment"
+        android:name="com.example.proiect.RatedFragment"
+        android:label="Rated"
+        tools:layout="@layout/fragment_rated" />
+
+</navigation>
