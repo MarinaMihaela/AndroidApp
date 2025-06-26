@@ -1,6 +1,7 @@
 package com.example.proiect
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proiect.data.model.api.HttpHelper
 import com.example.proiect.data.model.api.LocalServer
@@ -12,6 +13,11 @@ import androidx.activity.enableEdgeToEdge
 
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.proiect.data.model.Film
+import com.example.proiect.data.model.api.FilmDataSource
+import kotlinx.serialization.builtins.ListSerializer
+import kotlinx.serialization.json.Json
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var server: LocalServer
@@ -32,16 +38,28 @@ class MainActivity : AppCompatActivity() {
         server.startServer()
 
         // Test: request catre /hello
-        CoroutineScope(Dispatchers.IO).launch {
-            val helloResponse = HttpHelper.httpGet("http://localhost:8080/hello")
-            android.util.Log.d("MyApp", "Raspuns /hello: $helloResponse")
-        }
+//        CoroutineScope(Dispatchers.IO).launch {
+//            val helloResponse = HttpHelper.httpGet("http://localhost:8080/hello")
+//            android.util.Log.d("MyApp", "Raspuns /hello: $helloResponse")
+//        }
 
         // Test: request catre /filme
-        CoroutineScope(Dispatchers.IO).launch {
-            val filmeResponse = HttpHelper.httpGet("http://localhost:8080/filme")
-            android.util.Log.d("MyApp", "Raspuns /filme: $filmeResponse")
-        }
+//        CoroutineScope(Dispatchers.IO).launch {
+//            val filmeResponse = HttpHelper.httpGet("http://localhost:8080/filme")
+//            android.util.Log.d("MyApp", "Raspuns /filme: $filmeResponse")
+//        }
+
+//        CoroutineScope(Dispatchers.IO).launch {
+//            try {
+//                val jsonBody = Json.encodeToString(ListSerializer(Film.serializer()), FilmDataSource.filmeInitiale)
+//                val postResponse = HttpHelper.httpPostFilme("http://10.0.2.2:8080/filme", jsonBody)
+//
+//
+//                Log.d("MainActivity", "POST /filme response: $postResponse")
+//            } catch (e: Exception) {
+//                Log.e("MainActivity", "POST error: ${e.message}", e)
+//            }
+//        }
     }
 
     override fun onDestroy() {

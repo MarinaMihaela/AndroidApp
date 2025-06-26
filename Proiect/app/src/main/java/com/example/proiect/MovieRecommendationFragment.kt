@@ -1,6 +1,7 @@
 package com.example.proiect
-
+import com.example.proiect.data.model.api.HttpHelper
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +12,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.proiect.data.db.AppDatabase
 import com.example.proiect.data.model.Film
 import com.example.proiect.adapter.MovieAdapter
+import com.example.proiect.data.model.api.FilmDataSource
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.builtins.ListSerializer
+import kotlinx.serialization.json.Json
 
 class MovieRecommendationFragment : Fragment() {
 
@@ -39,41 +44,37 @@ class MovieRecommendationFragment : Fragment() {
         val filmDao = db.filmDao()
 
         lifecycleScope.launch {
-            withContext(Dispatchers.IO) {
-                val films = filmDao.getAll().first()
-                if (films.isEmpty()) {
-                    filmDao.insertAll(
-                        listOf(
-                            Film(
-                                id = 1,
-                                nume = "Inception",
-                                descriere = "A mind-bending thriller",
-                                durata = 148,
-                                gen = "Sci-Fi",
-                                actori = "Leonardo DiCaprio",
-                                regizori = "Christopher Nolan",
-                                poster = "",
-                                rating = 4.5f
-                            ),
-                            Film(
-                                id = 2,
-                                nume = "Interstellar",
-                                descriere = "Exploring space and time",
-                                durata = 169,
-                                gen = "Sci-Fi",
-                                actori = "Matthew McConaughey",
-                                regizori = "Christopher Nolan",
-                                poster = "",
-                                rating = 4.8f
-                            )
-                        )
-                    )
 
+
+            withContext(Dispatchers.IO) {
+                try {
+                    val jsonBody = Json.encodeToString(ListSerializer(Film.serializer()), FilmDataSource.filmeInitiale)
+                    val postResponse = HttpHelper.httpPostFilme("http://localhost:8080/filme", jsonBody)
+
+
+                    Log.d("MainActivity", "POST /filme response: $postResponse")
+                } catch (e: Exception) {
+                    Log.e("MainActivity", "POST error: ${e.message}", e)
                 }
-                val allFilms = filmDao.getAll().first()
-                withContext(Dispatchers.Main) {
-                    adapter.setMovies(allFilms)
+                try {
+                    val response = HttpHelper.httpGet("http://localhost:8080/filme")
+
+                    val allFilms = Json.decodeFromString<List<Film>>(response)
+
+                    android.util.Log.d("allFilms response: ", response);
+                    withContext(Dispatchers.Main) {
+                        adapter.setMovies(allFilms)
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    withContext(Dispatchers.Main) {
+                        android.util.Log.e("MyApp", "Eroare la parsarea filmelor: ${e.message}")
+                    }
                 }
+//                val allFilms = filmDao.getAll().first()
+//                withContext(Dispatchers.Main) {
+//                    adapter.setMovies(allFilms)
+//                }
             }
         }
     }
