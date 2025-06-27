@@ -8,7 +8,7 @@
 
     <item
         android:id="@+id/watchedFragment"
-        android:icon="@drawable/ic_watched"
+        android:icon="@drawable/ic_watched_selector"
         android:title="Watched"/>
 
     <item

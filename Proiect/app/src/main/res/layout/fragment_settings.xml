@@ -15,7 +15,7 @@
         android:textStyle="bold"
         android:gravity="center"
         android:padding="16dp"
-        android:background="@color/banner_bg"
+        android:background="@drawable/banner_gradient"
         android:textColor="@color/banner_text"/>
 
     <LinearLayout

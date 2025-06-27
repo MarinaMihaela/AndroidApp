@@ -17,7 +17,7 @@
         android:gravity="center"
         android:padding="16dp"
         android:textColor="@color/banner_text"
-        android:background="@color/banner_bg" />
+        android:background="@drawable/banner_gradient" />
 
     <!-- Lista de filme -->
     <androidx.recyclerview.widget.RecyclerView

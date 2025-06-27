@@ -15,12 +15,24 @@
         app:defaultNavHost="true" />
 
     <!-- 2) BottomNavigationView -->
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/bottom_nav"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        app:menu="@menu/bottom_nav_menu"-->
+<!--        />-->
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:menu="@menu/bottom_nav_menu"
-        />
+        android:background="?android:attr/windowBackground"
+        app:itemIconTint="@color/nav_item_text_color"
+        app:itemTextColor="@color/nav_item_text_color"
+        app:itemBackground="@drawable/nav_item_bg_selector"
+        app:menu="@menu/bottom_nav_menu"/>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
