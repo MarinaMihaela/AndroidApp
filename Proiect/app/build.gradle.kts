@@ -45,6 +45,9 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
 
     implementation("androidx.recyclerview:recyclerview:1.3.0")
+    implementation(libs.google.material)
+    implementation ("com.google.android.material:material:1.10.0")
+
 
     val nav_version = "2.7.7"
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")

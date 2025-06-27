@@ -11,6 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatDelegate
 
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -28,8 +29,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        super.onCreate(savedInstanceState)
+        // --- ADDED: Initialize theme BEFORE super.onCreate, only once ---
+        if (isDarkTheme) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+        // ---------------------------------------------------------------
 
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         // Grab references
@@ -47,8 +55,6 @@ class MainActivity : AppCompatActivity() {
             ) View.GONE else View.VISIBLE
         }
 
-
-      
         enableEdgeToEdge()
 
 //        findViewById(R.id.nav_host_fragment)

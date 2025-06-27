@@ -6,6 +6,12 @@
     <color name="light_primary">#40CEB6</color>
     <color name="light_secondary">#FF000000</color>
 
+    <color name="primary_background">#F5F5F5</color>
+    <color name="primary_text">#222222</color>
+    <color name="banner_bg">#3F51B5</color>
+    <color name="banner_text">#FFFFFF</color>
+    <color name="switch_thumb">#3F51B5</color>
+
     <!-- Dark mode -->
     <color name="dark_primary">#212121</color>
     <color name="dark_secondary">#FFFFFF</color>

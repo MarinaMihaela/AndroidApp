@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Proiect</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="dark_mode">Dark</string>
+    <string name="dark_mode">Mode</string>
     <string name="rating_text">Rating: %1$s</string>
 
 

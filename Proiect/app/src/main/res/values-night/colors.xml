@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary_background">#161616</color>
+    <color name="primary_text">#FFFFFF</color>
+    <color name="banner_bg">#232C5B</color>
+    <color name="banner_text">#FFFFFF</color>
+    <color name="switch_thumb">#7F90FF</color>
+</resources>

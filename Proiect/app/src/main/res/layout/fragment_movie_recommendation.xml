@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F5F5F5"
-    android:fitsSystemWindows="true"> <!-- ca să nu se suprapună cu bara de sus -->
+    android:background="@color/primary_background"
+    android:fitsSystemWindows="true">
 
     <!-- Banner -->
     <TextView
@@ -16,8 +16,8 @@
         android:textStyle="bold"
         android:gravity="center"
         android:padding="16dp"
-        android:textColor="#FFFFFF"
-        android:background="#3F51B5" />
+        android:textColor="@color/banner_text"
+        android:background="@color/banner_bg" />
 
     <!-- Lista de filme -->
     <androidx.recyclerview.widget.RecyclerView
