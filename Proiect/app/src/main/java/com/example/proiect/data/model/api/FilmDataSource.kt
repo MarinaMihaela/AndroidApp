@@ -90,7 +90,7 @@ object FilmDataSource {
             gen = "Action",
             actori = "Russell Crowe",
             regizori = "Ridley Scott",
-            poster = "movie_generic",
+            poster = "poster_8",
             rating = 4.6f
         ),
         Film(
@@ -101,7 +101,7 @@ object FilmDataSource {
             gen = "Crime",
             actori = "Marlon Brando, Al Pacino",
             regizori = "Francis Ford Coppola",
-            poster = "movie_generic",
+            poster = "poster_9",
             rating = 5.0f
         ),
         Film(
@@ -112,7 +112,7 @@ object FilmDataSource {
             gen = "Drama",
             actori = "Brad Pitt, Edward Norton",
             regizori = "David Fincher",
-            poster = "movie_generic",
+            poster = "poster_10",
             rating = 4.6f
         )
     )
